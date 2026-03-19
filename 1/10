@@ -1,0 +1,55 @@
+using System;
+
+namespace MethodDecimalToBase
+{
+    internal class Program
+    {
+        static string DecimalToBase(int N, int baseSystem)
+        {
+            if (N == 0)
+                return "0";
+                
+            string result = "";
+            int temp = N;
+            
+            while (temp > 0)
+            {
+                int remainder = temp % baseSystem;
+                result = remainder + result;
+                temp /= baseSystem;
+            }
+            
+            return result;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Перевод в систему счисления";
+            
+            Console.Write("Введите число в десятичной системе: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            Console.Write("Введите основание системы счисления (2-10): ");
+            int baseSystem = int.Parse(Console.ReadLine());
+            
+            if (baseSystem < 2 || baseSystem > 10)
+            {
+                Console.WriteLine("Ошибка: основание должно быть от 2 до 10");
+            }
+            else
+            {
+                string result = DecimalToBase(N, baseSystem);
+                Console.WriteLine($"\n{N} в десятичной = {result} в {baseSystem}-ичной системе");
+                
+                Console.WriteLine("\nПроверка перевода:");
+                Console.WriteLine($"Двоичная (2): {DecimalToBase(N, 2)}");
+                Console.WriteLine($"Троичная (3): {DecimalToBase(N, 3)}");
+                Console.WriteLine($"Пятеричная (5): {DecimalToBase(N, 5)}");
+                Console.WriteLine($"Восьмеричная (8): {DecimalToBase(N, 8)}");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
