@@ -1,0 +1,52 @@
+using System;
+
+namespace MethodFibonacci
+{
+    internal class Program
+    {
+        static void PrintFibonacciUpTo(int M)
+        {
+            int a = 0;
+            int b = 1;
+            
+            if (M >= 0)
+            {
+                Console.Write(a + " ");
+            }
+            
+            if (M >= 1)
+            {
+                Console.Write(b + " ");
+            }
+            
+            while (true)
+            {
+                int next = a + b;
+                
+                if (next > M)
+                    break;
+                    
+                Console.Write(next + " ");
+                
+                a = b;
+                b = next;
+            }
+            
+            Console.WriteLine();
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Числа Фибоначчи";
+            
+            Console.Write("Введите предельное значение M: ");
+            int M = int.Parse(Console.ReadLine());
+            
+            Console.Write($"\nЧисла Фибоначчи, не превышающие {M}: ");
+            PrintFibonacciUpTo(M);
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
