@@ -1,0 +1,64 @@
+using System;
+
+namespace MethodStrangeHusband
+{
+    internal class Program
+    {
+        static double GetPositionAfterStages(int stages)
+        {
+            double position = 0;
+            int direction = 1;
+            
+            for (int stage = 1; stage <= stages; stage++)
+            {
+                double step = 1.0 / stage;
+                position += direction * step;
+                direction *= -1;
+            }
+            
+            return position;
+        }
+        
+        static double GetTotalPath(int stages)
+        {
+            double total = 0;
+            
+            for (int stage = 1; stage <= stages; stage++)
+            {
+                total += 1.0 / stage;
+            }
+            
+            return total;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Странный муж";
+            
+            Console.Write("Введите количество этапов N: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            double position = GetPositionAfterStages(N);
+            double totalPath = GetTotalPath(N);
+            
+            Console.WriteLine($"\nПосле {N} этапов мужчина находится на расстоянии {Math.Abs(position):F4} км от дома");
+            Console.WriteLine($"   {(position > 0 ? "по направлению к работе" : "по направлению к дому")}");
+            Console.WriteLine($"Общий пройденный путь: {totalPath:F4} км");
+            
+            Console.WriteLine("\nДвижение по этапам:");
+            position = 0;
+            int direction = 1;
+            
+            for (int stage = 1; stage <= N; stage++)
+            {
+                double step = 1.0 / stage;
+                position += direction * step;
+                Console.WriteLine($"Этап {stage}: прошел {step:F4} км, позиция: {position:F4} км от дома");
+                direction *= -1;
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
