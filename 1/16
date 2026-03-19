@@ -1,0 +1,49 @@
+using System;
+
+namespace MethodBankDeposit
+{
+    internal class Program
+    {
+        static int CalculateMonthsToTarget(double deposit, double percent, double target)
+        {
+            double current = deposit;
+            int months = 0;
+            
+            while (current < target)
+            {
+                months++;
+                current += current * percent / 100;
+            }
+            
+            return months;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Накопление вклада";
+            
+            Console.Write("Введите начальную сумму вклада: ");
+            double deposit = double.Parse(Console.ReadLine());
+            
+            Console.Write("Введите процент по вкладу (годовой): ");
+            double percent = double.Parse(Console.ReadLine());
+            
+            Console.Write("Введите необходимую сумму: ");
+            double target = double.Parse(Console.ReadLine());
+            
+            int months = CalculateMonthsToTarget(deposit, percent, target);
+            
+            double finalAmount = deposit;
+            for (int i = 0; i < months; i++)
+            {
+                finalAmount += finalAmount * percent / 100;
+            }
+            
+            Console.WriteLine($"\nДля накопления {target} руб. потребуется {months} месяцев");
+            Console.WriteLine($"Итоговая сумма: {finalAmount:F2} руб.");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
