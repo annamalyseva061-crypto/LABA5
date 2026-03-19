@@ -1,0 +1,51 @@
+using System;
+
+namespace MethodSumFactorials
+{
+    internal class Program
+    {
+        static int Factorial(int k)
+        {
+            if (k == 0 || k == 1)
+                return 1;
+                
+            int result = 1;
+            for (int i = 2; i <= k; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+        
+        static int SumFactorials(int n)
+        {
+            int sum = 0;
+            for (int i = 1; i <= n; i++)
+            {
+                sum += Factorial(i);
+            }
+            return sum;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Сумма факториалов";
+            
+            Console.Write("Введите n: ");
+            int n = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine($"\nВычисление 1! + 2! + ... + {n}!\n");
+            
+            for (int i = 1; i <= n; i++)
+            {
+                Console.WriteLine($"{i}! = {Factorial(i)}");
+            }
+            
+            int result = SumFactorials(n);
+            Console.WriteLine($"\nСумма = {result}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
