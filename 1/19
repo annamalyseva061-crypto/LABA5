@@ -1,0 +1,75 @@
+using System;
+
+namespace MethodHarvest
+{
+    internal class Program
+    {
+        static double GetYieldInYear(int year)
+        {
+            if (year == 1)
+                return 20;
+                
+            double yield = 20;
+            for (int i = 2; i <= year; i++)
+            {
+                yield *= 1.02;
+            }
+            return yield;
+        }
+        
+        static double GetAreaInYear(int year)
+        {
+            if (year == 1)
+                return 100;
+                
+            double area = 100;
+            for (int i = 2; i <= year; i++)
+            {
+                area *= 1.05;
+            }
+            return area;
+        }
+        
+        static double GetTotalHarvest(int years)
+        {
+            double total = 0;
+            for (int i = 1; i <= years; i++)
+            {
+                total += GetAreaInYear(i) * GetYieldInYear(i);
+            }
+            return total;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Урожайность ячменя";
+            
+            Console.Write("Введите номер года N: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            double yieldN = GetYieldInYear(N);
+            double areaN = GetAreaInYear(N);
+            double harvestN = areaN * yieldN;
+            
+            Console.WriteLine($"\nВ {N}-й год:");
+            Console.WriteLine($"  Урожайность: {yieldN:F2} ц/га");
+            Console.WriteLine($"  Площадь: {areaN:F2} га");
+            Console.WriteLine($"  Урожай: {harvestN:F2} ц");
+            
+            if (N >= 1 && N <= 8)
+            {
+                double total6Years = GetTotalHarvest(6);
+                Console.WriteLine($"\nУрожай, собранный за первые 6 лет: {total6Years:F2} ц");
+            }
+            
+            Console.WriteLine("\nДинамика по годам:");
+            for (int i = 1; i <= N; i++)
+            {
+                Console.WriteLine($"Год {i}: урожайность {GetYieldInYear(i):F2} ц/га, площадь {GetAreaInYear(i):F2} га, урожай {GetAreaInYear(i) * GetYieldInYear(i):F2} ц");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
