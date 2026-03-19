@@ -1,0 +1,38 @@
+using System;
+
+namespace MethodDistance
+{
+    internal class Program
+    {
+        static double Distance(double x1, double y1, double x2, double y2)
+        {
+            return Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2));
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Расстояние между точками";
+            
+            Console.WriteLine("Введите координаты первой точки:");
+            Console.Write("x1 = ");
+            double x1 = double.Parse(Console.ReadLine());
+            
+            Console.Write("y1 = ");
+            double y1 = double.Parse(Console.ReadLine());
+            
+            Console.WriteLine("\nВведите координаты второй точки:");
+            Console.Write("x2 = ");
+            double x2 = double.Parse(Console.ReadLine());
+            
+            Console.Write("y2 = ");
+            double y2 = double.Parse(Console.ReadLine());
+            
+            double dist = Distance(x1, y1, x2, y2);
+            
+            Console.WriteLine($"\nРасстояние между точками A({x1}, {y1}) и B({x2}, {y2}) = {dist:F2}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
