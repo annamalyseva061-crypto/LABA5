@@ -1,0 +1,53 @@
+using System;
+
+namespace MethodSkier
+{
+    internal class Program
+    {
+        static double GetDistanceOnDay(int day)
+        {
+            if (day == 1)
+                return 10;
+                
+            double distance = 10;
+            for (int i = 2; i <= day; i++)
+            {
+                distance *= 1.1;
+            }
+            return distance;
+        }
+        
+        static double GetTotalDistance(int days)
+        {
+            double total = 0;
+            for (int i = 1; i <= days; i++)
+            {
+                total += GetDistanceOnDay(i);
+            }
+            return total;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Лыжник";
+            
+            Console.Write("Введите номер дня N: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            double distanceOnDayN = GetDistanceOnDay(N);
+            Console.WriteLine($"\nПробег лыжника в {N}-й день: {distanceOnDayN:F2} км");
+            
+            double totalForNDays = GetTotalDistance(N);
+            Console.WriteLine($"Суммарный путь за {N} дней: {totalForNDays:F2} км");
+            
+            Console.WriteLine("\nПробег по дням:");
+            for (int i = 1; i <= N; i++)
+            {
+                Console.WriteLine($"День {i}: {GetDistanceOnDay(i):F2} км");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
