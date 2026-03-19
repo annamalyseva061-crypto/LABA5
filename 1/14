@@ -1,0 +1,43 @@
+using System;
+
+namespace MethodAverageGrade
+{
+    internal class Program
+    {
+        static double CalculateAverageGrade()
+        {
+            int sum = 0;
+            
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write($"Оценка по предмету {i}: ");
+                int grade = int.Parse(Console.ReadLine());
+                
+                if (grade < 1 || grade > 5)
+                {
+                    Console.WriteLine("Оценка должна быть от 1 до 5. Повторите ввод.");
+                    i--;
+                    continue;
+                }
+                
+                sum += grade;
+            }
+            
+            return (double)sum / 10;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Средняя оценка";
+            
+            Console.WriteLine("Введите оценки ученика по 10 предметам:\n");
+            
+            double average = CalculateAverageGrade();
+            
+            Console.WriteLine($"\nСредняя оценка: {average:F2}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
