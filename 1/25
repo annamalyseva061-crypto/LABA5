@@ -1,0 +1,64 @@
+using System;
+
+namespace MethodSumOverload
+{
+    internal class Program
+    {
+        static int Sum(int a, int b)
+        {
+            return a + b;
+        }
+        
+        static int Sum(int a, int b, int c)
+        {
+            return a + b + c;
+        }
+        
+        static int Sum(int a, int b, int c, int d)
+        {
+            return a + b + c + d;
+        }
+        
+        static double Sum(double a, double b)
+        {
+            return a + b;
+        }
+        
+        static double Sum(double a, double b, double c)
+        {
+            return a + b + c;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Перегрузка Sum";
+            
+            Console.WriteLine("Сложение целых чисел:");
+            Console.WriteLine("Sum(10, 5) = " + Sum(10, 5));
+            Console.WriteLine("Sum(10, 5, 7) = " + Sum(10, 5, 7));
+            Console.WriteLine("Sum(10, 5, 7, 3) = " + Sum(10, 5, 7, 3));
+            
+            Console.WriteLine("\nСложение вещественных чисел:");
+            Console.WriteLine("Sum(10.5, 5.2) = " + Sum(10.5, 5.2));
+            Console.WriteLine("Sum(10.5, 5.2, 7.3) = " + Sum(10.5, 5.2, 7.3));
+            
+            Console.WriteLine("\nВведите свои числа:");
+            
+            Console.Write("Введите 2 целых числа через пробел: ");
+            string[] input2 = Console.ReadLine().Split();
+            int a1 = int.Parse(input2[0]);
+            int a2 = int.Parse(input2[1]);
+            Console.WriteLine($"Sum({a1}, {a2}) = {Sum(a1, a2)}");
+            
+            Console.Write("Введите 3 целых числа через пробел: ");
+            string[] input3 = Console.ReadLine().Split();
+            a1 = int.Parse(input3[0]);
+            a2 = int.Parse(input3[1]);
+            int a3 = int.Parse(input3[2]);
+            Console.WriteLine($"Sum({a1}, {a2}, {a3}) = {Sum(a1, a2, a3)}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
