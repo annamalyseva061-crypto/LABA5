@@ -1,0 +1,79 @@
+using System;
+
+namespace MethodExamples
+{
+    internal class Program
+    {
+        static void Stars(int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write('*');
+                }
+                Console.WriteLine();
+            }
+        }
+        
+        static int Digits(int n)
+        {
+            int count = 0;
+            while (n > 0)
+            {
+                n /= 10;
+                count++;
+            }
+            return count;
+        }
+        
+        static int Min(int n1, int n2) => n1 < n2 ? n1 : n2;
+        
+        static int Min(int n1, int n2, int n3)
+        {
+            int min = n1;
+            if (min > n2)
+                min = n2;
+            if (min > n3)
+                min = n3;
+            return min;
+        }
+        
+        static int Min(int n1, int n2, int n3, int n4)
+        {
+            int min = n1;
+            if (min > n2)
+                min = n2;
+            if (min > n3)
+                min = n3;
+            if (min > n4)
+                min = n4;
+            return min;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Примеры методов";
+            
+            Console.WriteLine("Метод Stars(5):");
+            Stars(5);
+            
+            Console.WriteLine("\nМетод Stars(5*2):");
+            Stars(5 * 2);
+            
+            Console.WriteLine("\nМетод Stars(45/3):");
+            Stars(45 / 3);
+            
+            Console.WriteLine($"\nМетод Digits(10): {Digits(10)}");
+            Console.WriteLine($"Метод Digits(670+9): {Digits(670 + 9)}");
+            Console.WriteLine($"Метод Digits(1659-59): {Digits(1659 - 59)}");
+            
+            Console.WriteLine($"\nМетод Min(10, 99): {Min(10, 99)}");
+            Console.WriteLine($"Метод Min(20, 33, 9): {Min(20, 33, 9)}");
+            Console.WriteLine($"Метод Min(16, 5, 9, 75): {Min(16, 5, 9, 75)}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
