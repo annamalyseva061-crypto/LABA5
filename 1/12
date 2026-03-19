@@ -1,0 +1,38 @@
+using System;
+
+namespace MethodGetNumberInRange
+{
+    internal class Program
+    {
+        static int GetNumberInRange(int min, int max)
+        {
+            int number;
+            
+            do
+            {
+                Console.Write($"Введите число от {min} до {max}: ");
+                number = int.Parse(Console.ReadLine());
+                
+                if (number < min || number > max)
+                {
+                    Console.WriteLine($"Ошибка! Число должно быть от {min} до {max}. Попробуйте снова.");
+                }
+                
+            } while (number < min || number > max);
+            
+            return number;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Ввод числа в диапазоне";
+            
+            int number = GetNumberInRange(1, 100);
+            
+            Console.WriteLine($"\nСпасибо! Вы ввели корректное число: {number}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
