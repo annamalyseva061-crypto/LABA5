@@ -1,0 +1,33 @@
+using System;
+
+namespace MethodPrintRow
+{
+    internal class Program
+    {
+        static void PrintRow(int M, int N)
+        {
+            for (int i = 0; i < N; i++)
+            {
+                Console.Write(M + " ");
+            }
+            Console.WriteLine();
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Печать ряда чисел";
+            
+            Console.Write("Введите число M: ");
+            int M = int.Parse(Console.ReadLine());
+            
+            Console.Write("Введите длину ряда N: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            Console.Write("\nРезультат: ");
+            PrintRow(M, N);
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
