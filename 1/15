@@ -1,0 +1,46 @@
+using System;
+
+namespace MethodAverageWeight
+{
+    internal class Program
+    {
+        static double CalculateAverageMass(int count)
+        {
+            double sum = 0;
+            
+            for (int i = 1; i <= count; i++)
+            {
+                Console.Write($"Масса предмета {i}: ");
+                double mass = double.Parse(Console.ReadLine());
+                
+                if (mass <= 0)
+                {
+                    Console.WriteLine("Масса должна быть положительной. Повторите ввод.");
+                    i--;
+                    continue;
+                }
+                
+                sum += mass;
+            }
+            
+            return sum / count;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Средняя масса";
+            
+            Console.Write("Введите количество предметов: ");
+            int count = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("\nВведите массу каждого предмета:\n");
+            
+            double average = CalculateAverageMass(count);
+            
+            Console.WriteLine($"\nСредняя масса: {average:F2}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
