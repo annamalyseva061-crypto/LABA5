@@ -1,0 +1,55 @@
+using System;
+
+namespace MethodBaseToDecimal
+{
+    internal class Program
+    {
+        static int BaseToDecimal(string number, int baseSystem)
+        {
+            int result = 0;
+            int power = 0;
+            
+            for (int i = number.Length - 1; i >= 0; i--)
+            {
+                int digit = int.Parse(number[i].ToString());
+                result += digit * (int)Math.Pow(baseSystem, power);
+                power++;
+            }
+            
+            return result;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Перевод из системы счисления";
+            
+            Console.Write("Введите число: ");
+            string number = Console.ReadLine();
+            
+            Console.Write("Введите основание системы счисления (2-10): ");
+            int baseSystem = int.Parse(Console.ReadLine());
+            
+            if (baseSystem < 2 || baseSystem > 10)
+            {
+                Console.WriteLine("Ошибка: основание должно быть от 2 до 10");
+            }
+            else
+            {
+                int result = BaseToDecimal(number, baseSystem);
+                Console.WriteLine($"\n{number} в {baseSystem}-ичной системе = {result} в десятичной");
+                
+                Console.WriteLine($"\nДетальный расчет:");
+                int power = 0;
+                for (int i = number.Length - 1; i >= 0; i--)
+                {
+                    int digit = int.Parse(number[i].ToString());
+                    Console.WriteLine($"{digit} * {baseSystem}^{power} = {digit * Math.Pow(baseSystem, power)}");
+                    power++;
+                }
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
