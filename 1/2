@@ -1,0 +1,40 @@
+using System;
+
+namespace MethodFactorial
+{
+    internal class Program
+    {
+        static int Factorial(int k)
+        {
+            if (k == 0 || k == 1)
+                return 1;
+                
+            int result = 1;
+            for (int i = 2; i <= k; i++)
+            {
+                result *= i;
+            }
+            return result;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Вычисление факториала";
+            
+            Console.Write("Введите число k: ");
+            int k = int.Parse(Console.ReadLine());
+            
+            int result = Factorial(k);
+            Console.WriteLine($"{k}! = {result}");
+            
+            Console.WriteLine("\nТаблица факториалов:");
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.WriteLine($"{i}! = {Factorial(i)}");
+            }
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
