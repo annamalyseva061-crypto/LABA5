@@ -1,0 +1,54 @@
+using System;
+
+namespace MethodPrintDigits
+{
+    internal class Program
+    {
+        static void PrintDigits(int N)
+        {
+            if (N == 0)
+            {
+                Console.Write("0");
+                return;
+            }
+            
+            if (N < 0)
+            {
+                Console.Write("-");
+                N = -N;
+            }
+            
+            int temp = N;
+            int divisor = 1;
+            
+            while (temp >= 10)
+            {
+                temp /= 10;
+                divisor *= 10;
+            }
+            
+            temp = N;
+            while (divisor > 0)
+            {
+                int digit = temp / divisor;
+                Console.Write(digit + " ");
+                temp %= divisor;
+                divisor /= 10;
+            }
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Вывод цифр числа";
+            
+            Console.Write("Введите целое число N: ");
+            int N = int.Parse(Console.ReadLine());
+            
+            Console.Write($"Цифры числа {N}: ");
+            PrintDigits(N);
+            
+            Console.Write("\n\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
