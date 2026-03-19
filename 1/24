@@ -1,0 +1,88 @@
+using System;
+
+namespace MethodMinOverload
+{
+    internal class Program
+    {
+        static int Min(int a, int b)
+        {
+            return a < b ? a : b;
+        }
+        
+        static int Min(int a, int b, int c)
+        {
+            int min = a;
+            
+            if (b < min)
+                min = b;
+                
+            if (c < min)
+                min = c;
+                
+            return min;
+        }
+        
+        static int Min(int a, int b, int c, int d)
+        {
+            int min = a;
+            
+            if (b < min)
+                min = b;
+                
+            if (c < min)
+                min = c;
+                
+            if (d < min)
+                min = d;
+                
+            return min;
+        }
+        
+        static int Min(int a, int b, int c, int d, int e)
+        {
+            int min = a;
+            
+            if (b < min)
+                min = b;
+                
+            if (c < min)
+                min = c;
+                
+            if (d < min)
+                min = d;
+                
+            if (e < min)
+                min = e;
+                
+            return min;
+        }
+        
+        static void Main(string[] args)
+        {
+            Console.Title = "Работа 5. Перегрузка Min";
+            
+            Console.WriteLine("Min из 2 чисел (10, 5): " + Min(10, 5));
+            Console.WriteLine("Min из 3 чисел (10, 5, 7): " + Min(10, 5, 7));
+            Console.WriteLine("Min из 4 чисел (10, 5, 7, 3): " + Min(10, 5, 7, 3));
+            Console.WriteLine("Min из 5 чисел (10, 5, 7, 3, 9): " + Min(10, 5, 7, 3, 9));
+            
+            Console.WriteLine("\nВведите свои числа:");
+            
+            Console.Write("Введите 2 числа через пробел: ");
+            string[] input2 = Console.ReadLine().Split();
+            int n1 = int.Parse(input2[0]);
+            int n2 = int.Parse(input2[1]);
+            Console.WriteLine($"Min({n1}, {n2}) = {Min(n1, n2)}");
+            
+            Console.Write("\nВведите 3 числа через пробел: ");
+            string[] input3 = Console.ReadLine().Split();
+            n1 = int.Parse(input3[0]);
+            n2 = int.Parse(input3[1]);
+            int n3 = int.Parse(input3[2]);
+            Console.WriteLine($"Min({n1}, {n2}, {n3}) = {Min(n1, n2, n3)}");
+            
+            Console.Write("\nНажми любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+}
